@@ -21,9 +21,9 @@ const AdminSidebar = ({ mobileOpen, onClose }) => {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="px-5 py-4 border-b border-[#EAF3DE]">
-        <span className="text-[16px] font-medium text-[#27500A]">VillageConnect</span>
-        <p className="text-[11px] text-[#5F5E5A] mt-0.5">Admin Panel</p>
+      <div className="px-5 py-4 border-b border-[#EFF6FF]">
+        <span className="text-[16px] font-medium text-[#0F172A]">PeopleConnect</span>
+        <p className="text-[11px] text-[#64748B] mt-0.5">Admin Panel</p>
       </div>
 
       {/* Nav items */}
@@ -37,8 +37,8 @@ const AdminSidebar = ({ mobileOpen, onClose }) => {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all
               ${isActive
-                ? 'bg-[#EAF3DE] text-[#27500A] border-l-[3px] border-l-[#3B6D11] pl-[9px]'
-                : 'text-[#5F5E5A] hover:bg-[#EAF3DE]/60 hover:text-[#3B6D11]'
+                ? 'bg-[#EFF6FF] text-[#0F172A] border-l-[3px] border-l-[#2563EB] pl-[9px]'
+                : 'text-[#64748B] hover:bg-[#EFF6FF]/60 hover:text-[#2563EB]'
               }`
             }
           >
@@ -49,14 +49,14 @@ const AdminSidebar = ({ mobileOpen, onClose }) => {
       </nav>
 
       {/* User info + logout */}
-      <div className="px-3 py-4 border-t border-[#EAF3DE]">
+      <div className="px-3 py-4 border-t border-[#EFF6FF]">
         <div className="flex items-center gap-2.5 px-2 py-2 mb-2">
-          <div className="w-8 h-8 rounded-full bg-[#3B6D11] text-white text-[12px] font-medium flex items-center justify-center flex-shrink-0">
+          <div className="w-8 h-8 rounded-full bg-[#2563EB] text-white text-[12px] font-medium flex items-center justify-center flex-shrink-0">
             {user?.name?.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2) || 'A'}
           </div>
           <div className="min-w-0">
-            <p className="text-[13px] font-medium text-[#2C2C2A] truncate">{user?.name}</p>
-            <p className="text-[11px] text-[#5F5E5A] truncate">{user?.email}</p>
+            <p className="text-[13px] font-medium text-[#1E293B] truncate">{user?.name}</p>
+            <p className="text-[11px] text-[#64748B] truncate">{user?.email}</p>
           </div>
         </div>
         <button
@@ -73,7 +73,7 @@ const AdminSidebar = ({ mobileOpen, onClose }) => {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col w-[240px] bg-white border-r border-[#EAF3DE] h-screen sticky top-0 flex-shrink-0">
+      <aside className="hidden lg:flex flex-col w-[240px] bg-white border-r border-[#EFF6FF] h-screen sticky top-0 flex-shrink-0">
         <SidebarContent />
       </aside>
 

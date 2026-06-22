@@ -8,8 +8,8 @@ const ProtectedRoute = ({ children }) => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F1EFE8]">
-        <Spinner size="lg" color="#3B6D11" />
+      <div className="min-h-screen flex items-center justify-center bg-[#F8FAFC]">
+        <Spinner size="lg" color="#2563EB" />
       </div>
     );
   }

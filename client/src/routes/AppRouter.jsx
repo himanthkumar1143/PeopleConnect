@@ -11,18 +11,18 @@ import RegisterPage from '../pages/auth/RegisterPage';
 import AdminLoginPage from '../pages/auth/AdminLoginPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
-// Villager pages
-import DashboardPage from '../pages/villager/DashboardPage';
-import JobsPage from '../pages/villager/JobsPage';
-import JobDetailPage from '../pages/villager/JobDetailPage';
-import AgriculturePage from '../pages/villager/AgriculturePage';
-import AgricultureDetailPage from '../pages/villager/AgricultureDetailPage';
-import HealthcarePage from '../pages/villager/HealthcarePage';
-import HealthcareDetailPage from '../pages/villager/HealthcareDetailPage';
-import EducationPage from '../pages/villager/EducationPage';
-import EducationDetailPage from '../pages/villager/EducationDetailPage';
-import GrievancePage from '../pages/villager/GrievancePage';
-import ProfilePage from '../pages/villager/ProfilePage';
+// Member pages
+import DashboardPage from '../pages/member/DashboardPage';
+import JobsPage from '../pages/member/JobsPage';
+import JobDetailPage from '../pages/member/JobDetailPage';
+import ResourcePage from '../pages/member/ResourcePage';
+import ResourceDetailPage from '../pages/member/ResourceDetailPage';
+import HealthcarePage from '../pages/member/HealthcarePage';
+import HealthcareDetailPage from '../pages/member/HealthcareDetailPage';
+import EducationPage from '../pages/member/EducationPage';
+import EducationDetailPage from '../pages/member/EducationDetailPage';
+import GrievancePage from '../pages/member/GrievancePage';
+import ProfilePage from '../pages/member/ProfilePage';
 
 // Admin pages
 import AdminDashboard from '../pages/admin/AdminDashboard';
@@ -46,12 +46,12 @@ const AppRouter = () => (
       <Route path="/register" element={<PublicOnlyRoute><RegisterPage /></PublicOnlyRoute>} />
       <Route path="/admin-login" element={<PublicOnlyRoute><AdminLoginPage /></PublicOnlyRoute>} />
 
-      {/* Protected — Villager */}
+      {/* Protected — Member */}
       <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
       <Route path="/jobs" element={<ProtectedRoute><JobsPage /></ProtectedRoute>} />
       <Route path="/jobs/:id" element={<ProtectedRoute><JobDetailPage /></ProtectedRoute>} />
-      <Route path="/agriculture" element={<ProtectedRoute><AgriculturePage /></ProtectedRoute>} />
-      <Route path="/agriculture/:id" element={<ProtectedRoute><AgricultureDetailPage /></ProtectedRoute>} />
+      <Route path="/resources" element={<ProtectedRoute><ResourcePage /></ProtectedRoute>} />
+      <Route path="/resources/:id" element={<ProtectedRoute><ResourceDetailPage /></ProtectedRoute>} />
       <Route path="/healthcare" element={<ProtectedRoute><HealthcarePage /></ProtectedRoute>} />
       <Route path="/healthcare/:id" element={<ProtectedRoute><HealthcareDetailPage /></ProtectedRoute>} />
       <Route path="/education" element={<ProtectedRoute><EducationPage /></ProtectedRoute>} />

@@ -7,7 +7,7 @@ import connectDB from './config/db.js';
 
 import authRoutes from './routes/auth.routes.js';
 import jobRoutes from './routes/job.routes.js';
-import agricultureRoutes from './routes/agriculture.routes.js';
+import resourcesRoutes from './routes/resource.routes.js';
 import healthcareRoutes from './routes/healthcare.routes.js';
 import educationRoutes from './routes/education.route.js';
 import grievanceRoutes from './routes/grievance.route.js';
@@ -40,7 +40,7 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Dat
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
-app.use('/api/agriculture', agricultureRoutes);
+app.use('/api/resources', resourcesRoutes);
 app.use('/api/healthcare', healthcareRoutes);
 app.use('/api/education', educationRoutes);
 app.use('/api/grievances', grievanceRoutes);
@@ -58,4 +58,4 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🌿 VillageConnect server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🌿 PeopleConnect server running on port ${PORT}`));

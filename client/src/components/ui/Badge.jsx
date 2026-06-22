@@ -1,10 +1,10 @@
 const statusMap = {
   pending:     { bg: 'bg-amber-50',   text: 'text-amber-700',  border: 'border-amber-200',  label: 'Pending' },
   'in-progress': { bg: 'bg-blue-50',  text: 'text-blue-700',   border: 'border-blue-200',   label: 'In Progress' },
-  resolved:    { bg: 'bg-[#EAF3DE]',  text: 'text-[#27500A]',  border: 'border-[#3B6D11]/20', label: 'Resolved' },
+  resolved:    { bg: 'bg-[#EFF6FF]',  text: 'text-[#0F172A]',  border: 'border-[#2563EB]/20', label: 'Resolved' },
   admin:       { bg: 'bg-purple-50',  text: 'text-purple-700', border: 'border-purple-200', label: 'Admin' },
-  villager:    { bg: 'bg-gray-100',   text: 'text-gray-600',   border: 'border-gray-200',   label: 'Villager' },
-  tip:         { bg: 'bg-[#EAF3DE]',  text: 'text-[#27500A]',  border: 'border-[#3B6D11]/20', label: 'Tip' },
+  member:      { bg: 'bg-gray-100',   text: 'text-gray-600',   border: 'border-gray-200',   label: 'Community Member' },
+  tip:         { bg: 'bg-[#EFF6FF]',  text: 'text-[#0F172A]',  border: 'border-[#2563EB]/20', label: 'Tip' },
   scheme:      { bg: 'bg-amber-50',   text: 'text-amber-700',  border: 'border-amber-200',  label: 'Scheme' },
 };
 

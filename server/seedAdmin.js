@@ -11,7 +11,7 @@ dotenv.config();
 import mongoose from 'mongoose';
 import User from './models/User.js';
 
-const ADMIN_EMAIL    = 'admin@villageconnect.com';
+const ADMIN_EMAIL    = 'admin@peopleconnect.com';
 const ADMIN_PASSWORD = 'Admin@1234';
 const ADMIN_NAME     = 'Admin';
 
@@ -25,7 +25,7 @@ const seed = async () => {
       if (existing.role === 'admin') {
         console.log('⚠️  Admin already exists:', existing.email);
       } else {
-        // Promote to admin if the account exists as a villager
+        // Promote to admin if the account exists as a member
         existing.role = 'admin';
         await existing.save();
         console.log('✅ Existing user promoted to admin:', existing.email);

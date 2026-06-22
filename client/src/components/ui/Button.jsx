@@ -2,11 +2,11 @@ import { useState, useRef } from 'react';
 import Spinner from './Spinner';
 
 const variantStyles = {
-  primary: 'bg-[#3B6D11] text-white hover:bg-[#27500A] border border-[#3B6D11] shadow-[var(--shadow-btn)] hover:shadow-[var(--shadow-btn-hover)]',
-  secondary: 'bg-[#EAF3DE] text-[#3B6D11] hover:bg-[#d4e8bf] border border-[#3B6D11]/30 hover:border-[#3B6D11]/50 shadow-sm hover:shadow-[var(--shadow-subtle)]',
+  primary: 'bg-[#2563EB] text-white hover:bg-[#0F172A] border border-[#2563EB] shadow-[var(--shadow-btn)] hover:shadow-[var(--shadow-btn-hover)]',
+  secondary: 'bg-[#EFF6FF] text-[#2563EB] hover:bg-[#DBEAFE] border border-[#2563EB]/30 hover:border-[#2563EB]/50 shadow-sm hover:shadow-[var(--shadow-subtle)]',
   danger: 'bg-[#E24B4A] text-white hover:bg-[#c73c3b] border border-[#E24B4A] shadow-[0_4px_14px_0_rgba(226,75,74,0.2)] hover:shadow-[0_6px_20px_rgba(226,75,74,0.3)]',
-  ghost: 'bg-transparent text-[#3B6D11] hover:bg-[#EAF3DE] border border-transparent hover:shadow-[var(--shadow-subtle)]',
-  outline: 'bg-transparent text-[#3B6D11] hover:bg-[#EAF3DE] border border-[#3B6D11] hover:shadow-[var(--shadow-subtle)]',
+  ghost: 'bg-transparent text-[#2563EB] hover:bg-[#EFF6FF] border border-transparent hover:shadow-[var(--shadow-subtle)]',
+  outline: 'bg-transparent text-[#2563EB] hover:bg-[#EFF6FF] border border-[#2563EB] hover:shadow-[var(--shadow-subtle)]',
 };
 
 const sizeStyles = {

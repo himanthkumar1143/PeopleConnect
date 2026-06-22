@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchHealthInfo } from '../../api/healthcare.api';
 import { useToast } from '../../context/ToastContext';
-import VillagerLayout from '../../components/layout/VillagerLayout';
+import MemberLayout from '../../components/layout/MemberLayout';
 import HealthcareCard from '../../components/cards/HealthcareCard';
 import SkeletonCard from '../../components/ui/SkeletonCard';
 import { Activity } from 'lucide-react';
@@ -9,8 +9,8 @@ import { Activity } from 'lucide-react';
 const EmptyState = () => (
   <div className="flex flex-col items-center py-16 text-center">
     <Activity size={56} strokeWidth={1.5} color="#d4d0c8" className="mb-4" />
-    <h3 className="text-[16px] font-medium text-[#2C2C2A]">No healthcare info available</h3>
-    <p className="text-[13px] text-[#5F5E5A] mt-1">Check back soon for health services near you.</p>
+    <h3 className="text-[16px] font-medium text-[#1E293B]">No healthcare info available</h3>
+    <p className="text-[13px] text-[#64748B] mt-1">Check back soon for health services near you.</p>
   </div>
 );
 
@@ -27,10 +27,10 @@ const HealthcarePage = () => {
   }, []);
 
   return (
-    <VillagerLayout>
+    <MemberLayout>
       <div className="mb-6">
-        <h1 className="text-[22px] font-medium text-[#2C2C2A]">Healthcare</h1>
-        <p className="text-[14px] text-[#5F5E5A] mt-1">Health services and wellness information available in your region</p>
+        <h1 className="text-[22px] font-medium text-[#1E293B]">Healthcare</h1>
+        <p className="text-[14px] text-[#64748B] mt-1">Health services and wellness information available in your region</p>
       </div>
 
       {loading ? (
@@ -44,7 +44,7 @@ const HealthcarePage = () => {
           {items.map((item) => <HealthcareCard key={item._id} item={item} />)}
         </div>
       )}
-    </VillagerLayout>
+    </MemberLayout>
   );
 };
 

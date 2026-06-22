@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchResources } from '../../api/education.api';
 import { useToast } from '../../context/ToastContext';
-import VillagerLayout from '../../components/layout/VillagerLayout';
+import MemberLayout from '../../components/layout/MemberLayout';
 import EducationCard from '../../components/cards/EducationCard';
 import SkeletonCard from '../../components/ui/SkeletonCard';
 import { BookOpen } from 'lucide-react';
@@ -9,8 +9,8 @@ import { BookOpen } from 'lucide-react';
 const EmptyState = () => (
   <div className="flex flex-col items-center py-16 text-center">
     <BookOpen size={56} strokeWidth={1.5} color="#d4d0c8" className="mb-4" />
-    <h3 className="text-[16px] font-medium text-[#2C2C2A]">No education resources available</h3>
-    <p className="text-[13px] text-[#5F5E5A] mt-1">Resources will be added soon.</p>
+    <h3 className="text-[16px] font-medium text-[#1E293B]">No education resources available</h3>
+    <p className="text-[13px] text-[#64748B] mt-1">Resources will be added soon.</p>
   </div>
 );
 
@@ -27,10 +27,10 @@ const EducationPage = () => {
   }, []);
 
   return (
-    <VillagerLayout>
+    <MemberLayout>
       <div className="mb-6">
-        <h1 className="text-[22px] font-medium text-[#2C2C2A]">Education</h1>
-        <p className="text-[14px] text-[#5F5E5A] mt-1">Courses, scholarships, and learning resources</p>
+        <h1 className="text-[22px] font-medium text-[#1E293B]">Education</h1>
+        <p className="text-[14px] text-[#64748B] mt-1">Courses, scholarships, and learning resources</p>
       </div>
 
       {loading ? (
@@ -44,7 +44,7 @@ const EducationPage = () => {
           {resources.map((res) => <EducationCard key={res._id} resource={res} />)}
         </div>
       )}
-    </VillagerLayout>
+    </MemberLayout>
   );
 };
 

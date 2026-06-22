@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const agricultureTipSchema = new mongoose.Schema(
+const resourceSchema = new mongoose.Schema(
   {
     title: { type: String, required: true, trim: true },
     description: { type: String, required: true },
@@ -9,5 +9,5 @@ const agricultureTipSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const AgricultureTip = mongoose.model('AgricultureTip', agricultureTipSchema);
-export default AgricultureTip;
+const Resource = mongoose.model('Resource', resourceSchema);
+export default Resource;

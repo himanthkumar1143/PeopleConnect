@@ -4,7 +4,7 @@ import { registerUser } from '../../api/auth.api';
 import { useToast } from '../../context/ToastContext';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
-import { Leaf, Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { Users, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 
 const RegisterPage = () => {
   const { showToast } = useToast();
@@ -55,13 +55,13 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F1EFE8] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md animate-fade-in-up">
         {/* Back to Home */}
         <div className="mb-6">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 text-[13px] text-[#5F5E5A] hover:text-[#3B6D11] transition-colors group"
+            className="inline-flex items-center gap-1.5 text-[13px] text-[#64748B] hover:text-[#2563EB] transition-colors group"
           >
             <ArrowLeft size={14} strokeWidth={2} className="group-hover:-translate-x-0.5 transition-transform" />
             Back to Home
@@ -69,14 +69,14 @@ const RegisterPage = () => {
         </div>
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-[#EAF3DE] flex items-center justify-center mx-auto mb-3 shadow-[var(--shadow-subtle)] transform hover:scale-110 hover:rotate-3 transition-transform duration-300 ease-out">
-            <Leaf size={28} color="#3B6D11" strokeWidth={2} />
+          <div className="w-14 h-14 rounded-2xl bg-[#EFF6FF] flex items-center justify-center mx-auto mb-3 shadow-[var(--shadow-subtle)] transform hover:scale-110 hover:rotate-3 transition-transform duration-300 ease-out">
+            <Users size={28} color="#2563EB" strokeWidth={2} />
           </div>
-          <h1 className="text-[22px] font-medium text-[#2C2C2A]">Create your account</h1>
-          <p className="text-[14px] text-[#5F5E5A] mt-1">Join VillageConnect today</p>
+          <h1 className="text-[22px] font-medium text-[#1E293B]">Create your account</h1>
+          <p className="text-[14px] text-[#64748B] mt-1">Join PeopleConnect today</p>
         </div>
 
-        <div className="bg-white/95 backdrop-blur-sm rounded-2xl border border-[#3B6D11]/15 shadow-[var(--shadow-card)] p-6 sm:p-8 hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl border border-[#2563EB]/15 shadow-[var(--shadow-card)] p-6 sm:p-8 hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
           {apiError && (
             <div className="mb-4 px-4 py-3 bg-red-50 border border-red-200 rounded-lg text-[13px] text-[#E24B4A]">
               {apiError}
@@ -118,7 +118,7 @@ const RegisterPage = () => {
               onChange={handleChange}
               error={errors.password}
               rightElement={
-                <button type="button" onClick={() => setShowPass(!showPass)} className="text-[#9e9d99] hover:text-[#5F5E5A]" tabIndex={-1}>
+                <button type="button" onClick={() => setShowPass(!showPass)} className="text-[#9e9d99] hover:text-[#64748B]" tabIndex={-1}>
                   {showPass ? (
                     <EyeOff size={16} strokeWidth={2} />
                   ) : (
@@ -153,9 +153,9 @@ const RegisterPage = () => {
             </Button>
           </form>
 
-          <p className="text-center text-[13.5px] text-[#5F5E5A] mt-5">
+          <p className="text-center text-[13.5px] text-[#64748B] mt-5">
             Already have an account?{' '}
-            <Link to="/login" className="text-[#3B6D11] font-medium hover:text-[#27500A] underline decoration-2 decoration-transparent hover:decoration-[#3B6D11]/30 transition-all underline-offset-4">
+            <Link to="/login" className="text-[#2563EB] font-medium hover:text-[#0F172A] underline decoration-2 decoration-transparent hover:decoration-[#2563EB]/30 transition-all underline-offset-4">
               Sign in
             </Link>
           </p>

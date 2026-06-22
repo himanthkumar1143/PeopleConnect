@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { fetchJobs } from '../../api/job.api';
 import { useToast } from '../../context/ToastContext';
-import VillagerLayout from '../../components/layout/VillagerLayout';
+import MemberLayout from '../../components/layout/MemberLayout';
 import JobCard from '../../components/cards/JobCard';
 import SkeletonCard from '../../components/ui/SkeletonCard';
 import Input from '../../components/ui/Input';
@@ -10,8 +10,8 @@ import { Briefcase } from 'lucide-react';
 const EmptyState = () => (
   <div className="flex flex-col items-center py-16 text-center">
     <Briefcase size={64} strokeWidth={1.5} color="#d4d0c8" className="mb-4" />
-    <h3 className="text-[16px] font-medium text-[#2C2C2A]">No jobs found</h3>
-    <p className="text-[13px] text-[#5F5E5A] mt-1">Try adjusting your search or check back later.</p>
+    <h3 className="text-[16px] font-medium text-[#1E293B]">No jobs found</h3>
+    <p className="text-[13px] text-[#64748B] mt-1">Try adjusting your search or check back later.</p>
   </div>
 );
 
@@ -48,11 +48,11 @@ const JobsPage = () => {
   }, [search, location]);
 
   return (
-    <VillagerLayout>
+    <MemberLayout>
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-[22px] font-medium text-[#2C2C2A]">Job Listings</h1>
-        <p className="text-[14px] text-[#5F5E5A] mt-1">Find employment opportunities in your area</p>
+        <h1 className="text-[22px] font-medium text-[#1E293B]">Job Listings</h1>
+        <p className="text-[14px] text-[#64748B] mt-1">Find employment opportunities in your area</p>
       </div>
 
       {/* Filters */}
@@ -85,7 +85,7 @@ const JobsPage = () => {
           {jobs.map((job) => <JobCard key={job._id} job={job} />)}
         </div>
       )}
-    </VillagerLayout>
+    </MemberLayout>
   );
 };
 

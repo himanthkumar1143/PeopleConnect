@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
-import { fetchTips } from '../../api/agriculture.api';
+import { fetchTips } from '../../api/resource.api';
 import { useToast } from '../../context/ToastContext';
-import VillagerLayout from '../../components/layout/VillagerLayout';
-import AgricultureCard from '../../components/cards/AgricultureCard';
+import MemberLayout from '../../components/layout/MemberLayout';
+import ResourceCard from '../../components/cards/ResourceCard';
 import SkeletonCard from '../../components/ui/SkeletonCard';
-import { Leaf } from 'lucide-react';
+import { Users } from 'lucide-react';
 
 const tabs = ['all', 'tip', 'scheme'];
 
 const EmptyState = ({ filter }) => (
   <div className="flex flex-col items-center py-16 text-center">
-    <Leaf size={56} strokeWidth={1.5} color="#d4d0c8" className="mb-4" />
-    <h3 className="text-[16px] font-medium text-[#2C2C2A]">No {filter === 'all' ? 'tips or schemes' : filter + 's'} found</h3>
-    <p className="text-[13px] text-[#5F5E5A] mt-1">Check back later for new content.</p>
+    <Users size={56} strokeWidth={1.5} className="mb-4 text-slate-300" />
+    <h3 className="text-[16px] font-medium text-[#1E293B]">No {filter === 'all' ? 'tips or schemes' : filter + 's'} found</h3>
+    <p className="text-[13px] text-[#64748B] mt-1">Check back later for new content.</p>
   </div>
 );
 
-const AgriculturePage = () => {
+const ResourcePage = () => {
   const { showToast } = useToast();
   const [tips, setTips] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,17 +25,17 @@ const AgriculturePage = () => {
   useEffect(() => {
     fetchTips()
       .then(({ data }) => setTips(data.tips || []))
-      .catch(() => showToast('Failed to load agriculture data', 'error'))
+      .catch(() => showToast('Failed to load resources data', 'error'))
       .finally(() => setLoading(false));
   }, []);
 
   const filtered = activeTab === 'all' ? tips : tips.filter((t) => t.category === activeTab);
 
   return (
-    <VillagerLayout>
+    <MemberLayout>
       <div className="mb-6">
-        <h1 className="text-[22px] font-medium text-[#2C2C2A]">Agriculture</h1>
-        <p className="text-[14px] text-[#5F5E5A] mt-1">Farming tips and government schemes to help you grow</p>
+        <h1 className="text-[22px] font-medium text-[#1E293B]">Resources</h1>
+        <p className="text-[14px] text-[#64748B] mt-1">Tips and schemes to help you grow</p>
       </div>
 
       {/* Category tabs */}
@@ -47,8 +47,8 @@ const AgriculturePage = () => {
             onClick={() => setActiveTab(tab)}
             className={`px-4 py-1.5 rounded-full text-[13px] font-medium border transition-all
               ${activeTab === tab
-                ? 'bg-[#3B6D11] text-white border-[#3B6D11]'
-                : 'bg-white text-[#5F5E5A] border-[#d4d0c8] hover:border-[#3B6D11]/30 hover:text-[#3B6D11]'
+                ? 'bg-[#2563EB] text-white border-[#2563EB]'
+                : 'bg-white text-[#64748B] border-[#d4d0c8] hover:border-[#2563EB]/30 hover:text-[#2563EB]'
               }`}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -64,11 +64,11 @@ const AgriculturePage = () => {
         <EmptyState filter={activeTab} />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filtered.map((tip) => <AgricultureCard key={tip._id} tip={tip} />)}
+          {filtered.map((tip) => <ResourceCard key={tip._id} tip={tip} />)}
         </div>
       )}
-    </VillagerLayout>
+    </MemberLayout>
   );
 };
 
-export default AgriculturePage;
+export default ResourcePage;

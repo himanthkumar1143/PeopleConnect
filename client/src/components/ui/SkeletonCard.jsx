@@ -1,5 +1,5 @@
 const SkeletonCard = ({ lines = 3 }) => (
-  <div className="bg-white rounded-xl border border-[#3B6D11]/10 p-5 space-y-3">
+  <div className="bg-white rounded-xl border border-[#2563EB]/10 p-5 space-y-3">
     <div className="skeleton h-5 w-3/4" />
     <div className="skeleton h-3.5 w-1/3" />
     {Array.from({ length: lines }).map((_, i) => (

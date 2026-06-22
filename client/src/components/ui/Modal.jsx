@@ -31,14 +31,14 @@ const Modal = ({ isOpen, onClose, title, children, maxWidth = 'max-w-md' }) => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        className={`relative w-full ${maxWidth} bg-white/95 backdrop-blur-xl rounded-2xl shadow-[var(--shadow-card-hover)] border border-[#3B6D11]/15 max-h-[90vh] flex flex-col transform transition-all duration-300 ${isAnimating ? 'animate-scale-in' : ''}`}
+        className={`relative w-full ${maxWidth} bg-white/95 backdrop-blur-xl rounded-2xl shadow-[var(--shadow-card-hover)] border border-[#2563EB]/15 max-h-[90vh] flex flex-col transform transition-all duration-300 ${isAnimating ? 'animate-scale-in' : ''}`}
       >
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#EAF3DE]">
-          <h2 id="modal-title" className="text-[16px] font-medium text-[#2C2C2A]">{title}</h2>
+        <div className="flex items-center justify-between px-5 py-4 border-b border-[#EFF6FF]">
+          <h2 id="modal-title" className="text-[16px] font-medium text-[#1E293B]">{title}</h2>
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="text-[#5F5E5A] hover:text-[#2C2C2A] hover:bg-[#EAF3DE] rounded-lg p-1.5 transition-all duration-200 hover:scale-110 active:scale-95"
+            className="text-[#64748B] hover:text-[#1E293B] hover:bg-[#EFF6FF] rounded-lg p-1.5 transition-all duration-200 hover:scale-110 active:scale-95"
           >
             <X size={16} strokeWidth={2} />
           </button>

@@ -42,44 +42,44 @@ const UsersPage = () => {
             id="users-role-filter"
             value={roleFilter}
             onChange={(e) => setRoleFilter(e.target.value)}
-            className="px-3 py-2.5 text-[14px] bg-white border border-[#d4d0c8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B6D11]/30 focus:border-[#3B6D11] text-[#2C2C2A] sm:w-[160px]"
+            className="px-3 py-2.5 text-[14px] bg-white border border-[#d4d0c8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB] text-[#1E293B] sm:w-[160px]"
           >
             <option value="all">All Roles</option>
-            <option value="villager">Villager</option>
+            <option value="member">Community Member</option>
             <option value="admin">Admin</option>
           </select>
         </div>
 
-        <div className="bg-white rounded-xl border border-[#3B6D11]/10 overflow-hidden">
-          <div className="px-5 py-4 border-b border-[#EAF3DE] flex items-center justify-between">
-            <h2 className="text-[15px] font-medium text-[#2C2C2A]">
-              All Users {!loading && <span className="text-[#5F5E5A] font-normal text-[13px]">({filtered.length})</span>}
+        <div className="bg-white rounded-xl border border-[#2563EB]/10 overflow-hidden">
+          <div className="px-5 py-4 border-b border-[#EFF6FF] flex items-center justify-between">
+            <h2 className="text-[15px] font-medium text-[#1E293B]">
+              All Users {!loading && <span className="text-[#64748B] font-normal text-[13px]">({filtered.length})</span>}
             </h2>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-[13px]">
               <thead>
-                <tr className="bg-[#F1EFE8]">
-                  <th className="text-left px-5 py-3 font-medium text-[#5F5E5A]">Name</th>
-                  <th className="text-left px-4 py-3 font-medium text-[#5F5E5A]">Email</th>
-                  <th className="text-left px-4 py-3 font-medium text-[#5F5E5A]">Role</th>
-                  <th className="text-left px-4 py-3 font-medium text-[#5F5E5A]">Joined</th>
+                <tr className="bg-[#F8FAFC]">
+                  <th className="text-left px-5 py-3 font-medium text-[#64748B]">Name</th>
+                  <th className="text-left px-4 py-3 font-medium text-[#64748B]">Email</th>
+                  <th className="text-left px-4 py-3 font-medium text-[#64748B]">Role</th>
+                  <th className="text-left px-4 py-3 font-medium text-[#64748B]">Joined</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#EAF3DE]">
+              <tbody className="divide-y divide-[#EFF6FF]">
                 {loading ? (
                   Array.from({ length: 8 }).map((_, i) => <SkeletonRow key={i} />)
                 ) : filtered.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="px-5 py-10 text-center text-[#5F5E5A]">No users match your filters.</td>
+                    <td colSpan={4} className="px-5 py-10 text-center text-[#64748B]">No users match your filters.</td>
                   </tr>
                 ) : filtered.map((u) => (
-                  <tr key={u._id} className="hover:bg-[#F1EFE8]/50 transition-colors">
-                    <td className="px-5 py-3 font-medium text-[#2C2C2A]">{u.name}</td>
-                    <td className="px-4 py-3 text-[#5F5E5A]">{u.email}</td>
+                  <tr key={u._id} className="hover:bg-[#F8FAFC]/50 transition-colors">
+                    <td className="px-5 py-3 font-medium text-[#1E293B]">{u.name}</td>
+                    <td className="px-4 py-3 text-[#64748B]">{u.email}</td>
                     <td className="px-4 py-3"><Badge status={u.role} /></td>
-                    <td className="px-4 py-3 text-[#5F5E5A] whitespace-nowrap">{formatDateShort(u.createdAt)}</td>
+                    <td className="px-4 py-3 text-[#64748B] whitespace-nowrap">{formatDateShort(u.createdAt)}</td>
                   </tr>
                 ))}
               </tbody>

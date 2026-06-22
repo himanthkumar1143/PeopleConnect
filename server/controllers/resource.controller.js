@@ -1,26 +1,26 @@
-import AgricultureTip from '../models/AgricultureTip.js';
+import Resource from '../models/Resource.js';
 
-export const getTips = async (req, res) => {
+export const getResources = async (req, res) => {
   try {
-    const tips = await AgricultureTip.find().sort({ createdAt: -1 });
+    const tips = await Resource.find().sort({ createdAt: -1 });
     res.json({ tips });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-export const createTip = async (req, res) => {
+export const createResource = async (req, res) => {
   try {
-    const tip = await AgricultureTip.create(req.body);
+    const tip = await Resource.create(req.body);
     res.status(201).json({ tip });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-export const updateTip = async (req, res) => {
+export const updateResource = async (req, res) => {
   try {
-    const tip = await AgricultureTip.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const tip = await Resource.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!tip) return res.status(404).json({ message: 'Tip not found' });
     res.json({ tip });
   } catch (error) {
@@ -28,9 +28,9 @@ export const updateTip = async (req, res) => {
   }
 };
 
-export const getTipById = async (req, res) => {
+export const getResourceById = async (req, res) => {
   try {
-    const tip = await AgricultureTip.findById(req.params.id);
+    const tip = await Resource.findById(req.params.id);
     if (!tip) return res.status(404).json({ message: 'Tip not found' });
     res.json({ tip });
   } catch (error) {
@@ -38,9 +38,9 @@ export const getTipById = async (req, res) => {
   }
 };
 
-export const deleteTip = async (req, res) => {
+export const deleteResource = async (req, res) => {
   try {
-    const tip = await AgricultureTip.findByIdAndDelete(req.params.id);
+    const tip = await Resource.findByIdAndDelete(req.params.id);
     if (!tip) return res.status(404).json({ message: 'Tip not found' });
     res.json({ message: 'Tip deleted' });
   } catch (error) {

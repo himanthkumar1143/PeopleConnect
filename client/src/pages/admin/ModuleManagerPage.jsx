@@ -9,11 +9,11 @@ import { SkeletonRow } from '../../components/ui/SkeletonCard';
 import { formatDateShort } from '../../utils/formatDate';
 
 import { fetchJobs, createJob, updateJob, deleteJob } from '../../api/job.api';
-import { fetchTips, createTip, updateTip, deleteTip } from '../../api/agriculture.api';
+import { fetchTips, createTip, updateTip, deleteTip } from '../../api/resource.api';
 import { fetchHealthInfo, createHealthInfo, updateHealthInfo, deleteHealthInfo } from '../../api/healthcare.api';
 import { fetchResources, createResource, updateResource, deleteResource } from '../../api/education.api';
 
-const tabs = ['Jobs', 'Agriculture', 'Healthcare', 'Education'];
+const tabs = ['Jobs', 'Resources', 'Healthcare', 'Education'];
 
 // Field configs per module
 const fieldConfigs = {
@@ -25,7 +25,7 @@ const fieldConfigs = {
     { name: 'salary', label: 'Salary Range' },
     { name: 'description', label: 'Description', multiline: true, required: true },
   ],
-  Agriculture: [
+  Resources: [
     { name: 'title', label: 'Title', required: true },
     { name: 'description', label: 'Description', multiline: true, required: true },
     { name: 'category', label: 'Category', type: 'select', options: ['tip', 'scheme'] },
@@ -45,24 +45,24 @@ const fieldConfigs = {
 
 const apiMap = {
   Jobs: { list: fetchJobs, create: createJob, update: updateJob, delete: deleteJob, key: 'jobs' },
-  Agriculture: { list: fetchTips, create: createTip, update: updateTip, delete: deleteTip, key: 'tips' },
+  Resources: { list: fetchTips, create: createResource, update: updateResource, delete: deleteResource, key: 'tips' },
   Healthcare: { list: fetchHealthInfo, create: createHealthInfo, update: updateHealthInfo, delete: deleteHealthInfo, key: 'info' },
   Education: { list: fetchResources, create: createResource, update: updateResource, delete: deleteResource, key: 'resources' },
 };
 
 const getTableCols = (tab) => {
   if (tab === 'Jobs') return ['Title', 'Company', 'Location', 'Type'];
-  if (tab === 'Agriculture') return ['Title', 'Category', 'Description'];
+  if (tab === 'Resources') return ['Title', 'Category', 'Description'];
   if (tab === 'Healthcare') return ['Title', 'Services'];
   return ['Title', 'Course Name', 'Link'];
 };
 
 const getRowValues = (tab, item) => {
   if (tab === 'Jobs') return [item.title, item.company, item.location, item.type || 'Full-time'];
-  if (tab === 'Agriculture') return [item.title, <Badge key="cat" status={item.category} />, item.description?.slice(0, 60) + '...'];
+  if (tab === 'Resources') return [item.title, <Badge key="cat" status={item.category} />, item.description?.slice(0, 60) + '...'];
   if (tab === 'Healthcare') return [item.title, item.services?.slice(0, 60)];
   return [item.title, item.courseName, item.resourceLink ? (
-    <a href={item.resourceLink} target="_blank" rel="noopener noreferrer" className="text-[#3B6D11] hover:underline">Link</a>
+    <a href={item.resourceLink} target="_blank" rel="noopener noreferrer" className="text-[#2563EB] hover:underline">Link</a>
   ) : '—'];
 };
 
@@ -172,8 +172,8 @@ const ModuleManagerPage = () => {
             onClick={() => setActiveTab(tab)}
             className={`px-4 py-2 rounded-lg text-[13px] font-medium border transition-all
               ${activeTab === tab
-                ? 'bg-[#3B6D11] text-white border-[#3B6D11]'
-                : 'bg-white text-[#5F5E5A] border-[#d4d0c8] hover:border-[#3B6D11]/30'
+                ? 'bg-[#2563EB] text-white border-[#2563EB]'
+                : 'bg-white text-[#64748B] border-[#d4d0c8] hover:border-[#2563EB]/30'
               }`}
           >
             {tab}
@@ -189,37 +189,37 @@ const ModuleManagerPage = () => {
         </Button>
       </div>
 
-      <div className="bg-white rounded-xl border border-[#3B6D11]/10 overflow-hidden">
+      <div className="bg-white rounded-xl border border-[#2563EB]/10 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-[13px]">
             <thead>
-              <tr className="bg-[#F1EFE8]">
+              <tr className="bg-[#F8FAFC]">
                 {cols.map((c) => (
-                  <th key={c} className="text-left px-5 py-3 font-medium text-[#5F5E5A]">{c}</th>
+                  <th key={c} className="text-left px-5 py-3 font-medium text-[#64748B]">{c}</th>
                 ))}
-                <th className="text-left px-4 py-3 font-medium text-[#5F5E5A]">Added</th>
-                <th className="text-left px-4 py-3 font-medium text-[#5F5E5A]">Actions</th>
+                <th className="text-left px-4 py-3 font-medium text-[#64748B]">Added</th>
+                <th className="text-left px-4 py-3 font-medium text-[#64748B]">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#EAF3DE]">
+            <tbody className="divide-y divide-[#EFF6FF]">
               {loading ? (
                 Array.from({ length: 6 }).map((_, i) => <SkeletonRow key={i} />)
               ) : items.length === 0 ? (
                 <tr>
-                  <td colSpan={cols.length + 2} className="px-5 py-10 text-center text-[#5F5E5A]">
+                  <td colSpan={cols.length + 2} className="px-5 py-10 text-center text-[#64748B]">
                     No items yet. Click "Add New" to get started.
                   </td>
                 </tr>
               ) : items.map((item) => {
                 const vals = getRowValues(activeTab, item);
                 return (
-                  <tr key={item._id} className="hover:bg-[#F1EFE8]/50 transition-colors">
+                  <tr key={item._id} className="hover:bg-[#F8FAFC]/50 transition-colors">
                     {vals.map((v, i) => (
-                      <td key={i} className="px-5 py-3 text-[#2C2C2A] max-w-[160px]">
+                      <td key={i} className="px-5 py-3 text-[#1E293B] max-w-[160px]">
                         <div className="truncate">{v}</div>
                       </td>
                     ))}
-                    <td className="px-4 py-3 text-[#5F5E5A] whitespace-nowrap">{formatDateShort(item.createdAt)}</td>
+                    <td className="px-4 py-3 text-[#64748B] whitespace-nowrap">{formatDateShort(item.createdAt)}</td>
                     <td className="px-4 py-3">
                       <div className="flex gap-2">
                         <Button size="sm" variant="secondary" onClick={() => openEdit(item)}>Edit</Button>
@@ -245,23 +245,23 @@ const ModuleManagerPage = () => {
           {fields.map((field) => (
             field.type === 'select' ? (
               <div key={field.name} className="flex flex-col gap-1">
-                <label className="text-[13px] font-medium text-[#2C2C2A]">{field.label}</label>
+                <label className="text-[13px] font-medium text-[#1E293B]">{field.label}</label>
                 <select
                   value={formData[field.name] || ''}
                   onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
-                  className="px-3 py-2.5 text-[14px] bg-white border border-[#d4d0c8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B6D11]/30"
+                  className="px-3 py-2.5 text-[14px] bg-white border border-[#d4d0c8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30"
                 >
                   {field.options.map((o) => <option key={o} value={o}>{o}</option>)}
                 </select>
               </div>
             ) : field.multiline ? (
               <div key={field.name} className="flex flex-col gap-1">
-                <label className="text-[13px] font-medium text-[#2C2C2A]">{field.label}</label>
+                <label className="text-[13px] font-medium text-[#1E293B]">{field.label}</label>
                 <textarea
                   rows={3}
                   value={formData[field.name] || ''}
                   onChange={(e) => { setFormData({ ...formData, [field.name]: e.target.value }); setFormErrors({ ...formErrors, [field.name]: '' }); }}
-                  className={`px-3 py-2.5 text-[14px] border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-[#3B6D11]/30 focus:border-[#3B6D11] ${formErrors[field.name] ? 'border-[#E24B4A]' : 'border-[#d4d0c8]'}`}
+                  className={`px-3 py-2.5 text-[14px] border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB] ${formErrors[field.name] ? 'border-[#E24B4A]' : 'border-[#d4d0c8]'}`}
                 />
                 {formErrors[field.name] && <p className="text-[12px] text-[#E24B4A]">{formErrors[field.name]}</p>}
               </div>
@@ -292,7 +292,7 @@ const ModuleManagerPage = () => {
         title="Confirm Delete"
         maxWidth="max-w-sm"
       >
-        <p className="text-[14px] text-[#5F5E5A] mb-5">Are you sure you want to delete this item? This action cannot be undone.</p>
+        <p className="text-[14px] text-[#64748B] mb-5">Are you sure you want to delete this item? This action cannot be undone.</p>
         <div className="flex justify-end gap-3">
           <Button variant="ghost" onClick={() => setConfirmDelete(null)}>Cancel</Button>
           <Button variant="danger" loading={deleting} disabled={deleting} onClick={handleDelete}>Delete</Button>

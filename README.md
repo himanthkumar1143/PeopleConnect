@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🌿 VillageConnect
+# 🌿 PeopleConnect
 
-### *Bridging the gap between rural communities and the services they deserve.*
+### *Bridging the gap between communities and the services they deserve.*
 
 [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
 [![Express](https://img.shields.io/badge/Express-5.x-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com)
@@ -19,25 +19,25 @@
 
 ## 🔭 What Is This?
 
-**VillageConnect** is a full-stack community portal built for rural India. It puts five critical services — jobs, agriculture, healthcare, education, and grievance redressal — into a single, clean, mobile-friendly interface that any villager can use without technical expertise.
+**PeopleConnect** is a full-stack web application for community members and administrators. Its purpose is to bring public-service information and basic request tracking into one portal. It puts five critical services — jobs, resources, healthcare, education, and grievance redressal — into a single, clean, mobile-friendly interface that any community member can use without technical expertise.
 
-Villagers register in seconds, browse real opportunities, file complaints, and track their resolution. Administrators get a dedicated secure panel to post jobs, manage content, and oversee every grievance from submission to resolution. No paperwork. No middlemen. Just a browser.
+People register in seconds, browse real opportunities, file complaints, and track their resolution. Administrators get a dedicated secure panel to post jobs, manage content, and oversee every grievance from submission to resolution. No paperwork. No middlemen. Just a browser.
 
 ---
 
 ## 🧩 Why This Exists
 
-Rural communities in India are chronically underserved by fragmented, inaccessible information systems. A farmer looking for a government agricultural scheme, a student searching for a scholarship, or a resident trying to file a local complaint — each has to navigate a maze of disconnected portals, if they can access them at all.
+Communities in India are chronically underserved by fragmented, inaccessible information systems. A farmer looking for a government agricultural scheme, a student searching for a scholarship, or a resident trying to file a local complaint — each has to navigate a maze of disconnected portals, if they can access them at all.
 
-VillageConnect collapses all of this into one authenticated, role-aware application. The admin posts; the villager reads, applies, and raises concerns — with live status tracking every step of the way.
+PeopleConnect collapses all of this into one authenticated, role-aware application. The admin posts; the community member reads, applies, and raises concerns — with live status tracking every step of the way.
 
 ---
 
 ## ✨ Feature Highlights
 
-### 👩‍🌾 For Villagers
+### 👩‍🌾 For People
 - 📋 **Jobs Board** — Browse job listings with real-time title & location search, powered by MongoDB regex queries
-- 🌾 **Agriculture Hub** — Farming tips and government schemes categorised by type (`tip` | `scheme`)
+- 🌾 **Resources Hub** — Tips and schemes categorised by type (`tip` | `scheme`)
 - 🏥 **Healthcare Directory** — Local health services and wellness information with freshness timestamps
 - 📚 **Education Resources** — Courses, scholarships, and resource links in one place
 - 📣 **Grievance System** — Submit complaints, track status (`pending` → `in-progress` → `resolved`), see live badge updates on the dashboard
@@ -46,8 +46,8 @@ VillageConnect collapses all of this into one authenticated, role-aware applicat
 ### 🛡️ For Admins
 - 🔐 **Dedicated Admin Login** — Separate entry point (`/admin-login`) with server-side role verification; non-admins are rejected even with valid credentials
 - 📊 **Admin Dashboard** — Real-time stat cards for total users, grievances, pending items, and jobs — loaded in a single parallel Promise.all call
-- ⚙️ **Module Manager** — Full CRUD for Jobs, Agriculture Tips, Healthcare Info, and Education Resources
-- 👥 **User Directory** — Browse all registered villagers with join dates and roles
+- ⚙️ **Module Manager** — Full CRUD for Jobs, Resources Tips, Healthcare Info, and Education Resources
+- 👥 **User Directory** — Browse all registered community members with join dates and roles
 - 🗂️ **Grievance Management** — View all complaints with filer info, update status with validation
 
 ### 🏗️ Platform-Level
@@ -81,7 +81,7 @@ VillageConnect collapses all of this into one authenticated, role-aware applicat
 ## 🗂️ Project Structure
 
 ```
-VillageConnect/
+PeopleConnect/
 │
 ├── client/                         # React + Vite frontend
 │   └── src/
@@ -90,14 +90,14 @@ VillageConnect/
 │       │   ├── auth.api.js
 │       │   ├── job.api.js
 │       │   ├── grievance.api.js
-│       │   ├── agriculture.api.js
+│       │   ├── resource.api.js
 │       │   ├── healthcare.api.js
 │       │   ├── education.api.js
 │       │   └── user.api.js
 │       │
 │       ├── components/
 │       │   ├── cards/              # JobCard, GrievanceCard, ServiceCard
-│       │   ├── layout/             # Navbar, Footer, VillagerLayout, AdminLayout, AdminSidebar, AdminTopbar
+│       │   ├── layout/             # Navbar, Footer, MemberLayout, AdminLayout, AdminSidebar, AdminTopbar
 │       │   └── ui/                 # Button, Input, Badge, Modal, Spinner, SkeletonCard, ToastContainer
 │       │
 │       ├── context/
@@ -107,10 +107,10 @@ VillageConnect/
 │       ├── pages/
 │       │   ├── HomePage.jsx        # Public landing page with hero, services, how-it-works
 │       │   ├── auth/
-│       │   │   ├── LoginPage.jsx       # Villager login
+│       │   │   ├── LoginPage.jsx       # Community Member login
 │       │   │   ├── AdminLoginPage.jsx  # Admin-only login with role gate
-│       │   │   └── RegisterPage.jsx    # Villager registration (role locked to 'villager')
-│       │   ├── villager/           # Dashboard, Jobs, JobDetail, Agriculture, Healthcare, Education, Grievance, Profile
+│       │   │   └── RegisterPage.jsx    # Community Member registration (role locked to 'member')
+│       │   ├── member/           # Dashboard, Jobs, JobDetail, Resources, Healthcare, Education, Grievance, Profile
 │       │   └── admin/              # AdminDashboard, UsersPage, GrievanceManagement, ModuleManagerPage
 │       │
 │       ├── routes/
@@ -128,11 +128,11 @@ VillageConnect/
 └── server/                         # Express 5 + Mongoose backend
     ├── config/
     │   └── db.js                   # MongoDB Atlas connection
-    ├── controllers/                # auth, job, grievance, agriculture, healthcare, education, user
+    ├── controllers/                # auth, job, grievance, resources, healthcare, education, user
     ├── middleware/
     │   ├── auth.middleware.js      # JWT verify → req.user
     │   └── role.middleware.js      # adminOnly gate (403 for non-admins)
-    ├── models/                     # Mongoose schemas: User, Job, Grievance, AgricultureTip, HealthInfo, EducationResource
+    ├── models/                     # Mongoose schemas: User, Job, Grievance, Resource, HealthInfo, EducationResource
     ├── routes/                     # Express routers (one per resource)
     ├── server.js                   # App bootstrap: CORS, Helmet, Morgan, routes, error handler
     ├── seedAdmin.js                # One-time script to create the admin account
@@ -154,8 +154,8 @@ VillageConnect/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/VillageConnect.git
-cd VillageConnect
+git clone https://github.com/your-username/PeopleConnect.git
+cd PeopleConnect
 ```
 
 ### 2. Configure the server
@@ -199,7 +199,7 @@ Output on success:
 ```
 ✅ MongoDB connected
 ✅ Admin account created successfully!
-   Email   : admin@villageconnect.com
+   Email   : admin@peopleconnect.com
    Password: Admin@1234
 🔌 Disconnected from MongoDB
 ```
@@ -220,14 +220,14 @@ Open **http://localhost:5173** in your browser.
 
 ## 💡 Usage Examples
 
-### Register as a Villager
-Navigate to `/register` or click **"Get Started — It's Free"** on the home page. All accounts created through the UI are automatically assigned the `villager` role.
+### Register as a Community Member
+Navigate to `/register` or click **"Get Started — It's Free"** on the home page. All accounts created through the UI are automatically assigned the `member` role.
 
 ### Admin Login
 On the home page, click **"Admin Login →"** (below the hero buttons) or go to `/admin-login` directly.
 
 ```
-Email:    admin@villageconnect.com
+Email:    admin@peopleconnect.com
 Password: Admin@1234
 ```
 
@@ -244,7 +244,7 @@ Authorization: Bearer <token>
 Content-Type: application/json
 
 {
-  "description": "Road near village market is not repaired for 3 months."
+  "description": "Road near community market is not repaired for 3 months."
 }
 ```
 
@@ -295,11 +295,11 @@ If omitted, the client defaults to `http://localhost:5000`.
 ```
 Browser                   Client (React)               Server (Express)
   │                           │                               │
-  │── POST /api/auth/login ──►│── axios → POST /api/login ──►│
+  │── POST /api/auth/login ──►│── axios → POST /api/login ──► │
   │                           │                               │── bcrypt.compare()
   │                           │                               │── jwt.sign()
-  │                           │◄── { token, user } ──────────│
-  │                           │── localStorage.setItem() ─── │
+  │                           │◄── { token, user } ────────── │
+  │                           │── localStorage.setItem() ───  │
   │                           │── AuthContext.login() ─────── │
   │── redirect /dashboard ───►│                               │
 ```
@@ -324,7 +324,7 @@ The **Admin Login page** (`/admin-login`) adds a third layer: even if credential
 
 ```mermaid
 sequenceDiagram
-    participant V as Villager
+    participant V as Community Member
     participant C as React Client
     participant API as Express API
     participant DB as MongoDB Atlas
@@ -380,8 +380,6 @@ This project is licensed under the **ISC License**.
 ---
 
 <div align="center">
-
-**Built with 🌿 for the villages that power the nation.**
 
 *Every feature in this app exists because someone, somewhere, needed it.*
 

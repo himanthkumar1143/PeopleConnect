@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Building2, MapPin, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+import Badge from '../ui/Badge';
 
-const JobCard = ({ job }) => (
+const ResourceCard = ({ tip }) => (
   <div className="
     group bg-white rounded-xl border border-[#2563EB]/10 shadow-[var(--shadow-subtle)]
     p-5 flex flex-col gap-3 relative overflow-hidden
@@ -9,29 +10,14 @@ const JobCard = ({ job }) => (
   ">
     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#EFF6FF]/60 to-transparent rounded-full blur-xl -mr-6 -mt-6 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     <div className="flex items-start justify-between gap-2 relative z-10">
-      <h3 className="text-[15.5px] font-medium text-[#1E293B] leading-snug group-hover:text-[#2563EB] transition-colors">{job.title}</h3>
-      {job.type && (
-        <span className="shrink-0 text-[11px] bg-[#EFF6FF] text-[#2563EB] px-2 py-0.5 rounded-full border border-[#2563EB]/15 shadow-sm">
-          {job.type}
-        </span>
-      )}
+      <h3 className="text-[15.5px] font-medium text-[#1E293B] leading-snug group-hover:text-[#2563EB] transition-colors">{tip.title}</h3>
+      <Badge status={tip.category} />
     </div>
 
-    <div className="flex items-center gap-3 text-[13px] text-[#64748B]">
-      <span className="flex items-center gap-1">
-        <Building2 size={13} strokeWidth={2} />
-        {job.company}
-      </span>
-      <span className="flex items-center gap-1">
-        <MapPin size={13} strokeWidth={2} />
-        {job.location}
-      </span>
-    </div>
-
-    <p className="text-[13px] text-[#64748B] leading-relaxed line-clamp-2">{job.description}</p>
+    <p className="text-[13px] text-[#64748B] leading-relaxed line-clamp-2">{tip.description}</p>
 
     <Link
-      to={`/jobs/${job._id}`}
+      to={`/resources/${tip._id}`}
       className="mt-auto self-start text-[13.5px] font-medium text-[#2563EB] flex items-center gap-1 group-hover:translate-x-1 transition-all duration-300 ease-out relative z-10"
     >
       View Details
@@ -40,4 +26,4 @@ const JobCard = ({ job }) => (
   </div>
 );
 
-export default JobCard;
+export default ResourceCard;
